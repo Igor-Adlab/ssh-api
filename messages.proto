@@ -1,0 +1,137 @@
+syntax = "proto2";
+
+package messages;
+
+message Msg {
+  required string Id = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+}
+
+message OkResponse {
+  required string Request = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+  required bool Ok = 5;
+}
+
+message MsgResponse {
+  required string Request = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+  required bool Ok = 5;
+}
+
+message ErrorResponse {
+  required string Request = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+  required bool Ok = 5;
+  required string Error = 6;
+}
+
+message ClientConnect {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+}
+
+message ClientDisconnect {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+}
+
+message PtyData {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  optional bytes Payload = 5;
+}
+
+message PtyRequest {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  optional string Payload = 5;
+}
+
+message PtyResponse {
+  required string Request = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+  required bool Ok = 5;
+  optional string Payload = 6;
+}
+
+message SftpReaddir {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  required string Path = 5;
+}
+
+message SftpReadFile {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  required string Path = 5;
+}
+
+message SftpMkdir {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  required string Path = 5;
+  required string Name = 6;
+}
+
+message SftpTouch {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  required string Path = 5;
+  required string Name = 6;
+}
+
+message SftpRm {
+  required string Id = 1;
+  optional string Type = 2;
+  required string Client = 3;
+  optional string Scope = 4;
+  required string Path = 5;
+}
+
+message FileInfo {
+  required string Id = 1;
+  optional string Type = 2;
+  optional string FileName = 3;
+  optional string FileType = 4;
+  optional int64 FileSize = 5;
+  optional string FileMode = 6;
+  optional bool IsDir = 7;
+  required string Path = 8;
+}
+
+message SftpResponse {
+  required string Request = 1;
+  required string Type = 2;
+  required string Client = 3;
+  required string Scope = 4;
+  required bool Ok = 5;
+  required string Path = 6;
+  repeated FileInfo Files = 7;
+}
